@@ -20,6 +20,8 @@ namespace MultiTeams.Instances
 
         public event EventHandler? OnSetupChanged;
 
+        public string ConfigPath => _configPath;
+
         public MultiTeamsSetup Setup { get; private set; } = new MultiTeamsSetup();
 
         public MultiTeamsSetupFactory(string configPath)

@@ -20,6 +20,8 @@ namespace MultiTeams
 
         public EventHandler? OnSetupChanged;
 
+        public string ConfigPath => _setupSource.ConfigPath;
+
         public MultiTeamsSetup Setup => _setupSource.Setup;
 
         public IEnumerable<InstanceSettings> TeamsInstances => Setup.Instances;
