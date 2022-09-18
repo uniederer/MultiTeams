@@ -75,10 +75,7 @@ namespace MultiTeams
             _menu.DropDownItems.Add(ToolStripBuilder.Button("Add...", OnAddInstance_Click));
             _menu.DropDownItems.Add(ToolStripBuilder.Button("Reveal config file in explorer...", (sender, args) =>
             {
-                using Process myProcess = new Process();
-                myProcess.StartInfo.FileName = "explorer.exe";
-                myProcess.StartInfo.Arguments = $"/select, \"{_service.ConfigPath}\"";
-                myProcess.Start();
+                ProcessLauncher.Start("explorer.exe", $"/select, \"{_service.ConfigPath}\"");
             }));
         }
 
