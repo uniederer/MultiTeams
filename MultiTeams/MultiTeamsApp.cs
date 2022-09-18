@@ -61,23 +61,18 @@ namespace MultiTeams
 
         private void InstanceMenuPopulate(IEnumerable<InstanceSettings> instances)
         {
-            if (instances == null)
-            {
-                _menu.Enabled = false;
-                return;
-            }
-
-            _menu.Enabled = instances.Count() > 0;
             _menu.DropDownItems.Clear();
 
-            foreach (var instance in instances.OrderBy(i => i.Name))
+            if (instances != null)
             {
-                _menu.DropDownItems.Add(InstanceMenuDetailMenu(instance));
+                foreach (var instance in instances.OrderBy(i => i.Name))
+                {
+                    _menu.DropDownItems.Add(InstanceMenuDetailMenu(instance));
+                }
             }
 
             var addMenu = new ToolStripMenuItem("Add...");
             addMenu.Click += OnAddInstance_Click;
-
             _menu.DropDownItems.Add(addMenu);
         }
 
