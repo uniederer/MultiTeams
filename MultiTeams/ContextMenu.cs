@@ -8,6 +8,7 @@
 using MultiTeams.Utils;
 using MultiTeams.WindowsNative;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace MultiTeams
@@ -61,13 +62,18 @@ namespace MultiTeams
 
             var ExitItem = ToolStripBuilder.Button("Exit", (sender, e) =>
             {
-                _icon.Visible = false;
-                _app?.Dispose();
-                Application.Exit();
+                ApplicationExit();
             });
             menu.Items.Add(ExitItem);
 
             return menu;
+        }
+
+        private void ApplicationExit()
+        {
+            _icon.Visible = false;
+            _app?.Dispose();
+            Application.Exit();
         }
 
         private ToolStripMenuItem SettingsMenuBuild()
@@ -100,6 +106,12 @@ namespace MultiTeams
                 {
                     _installer.Install();
                     _installer.AutostartEnable();
+                    if (!_installer.IsInstalledExe)
+                    {
+                        var exe = Path.Combine(_installer.InstallDir, Path.GetFileName(Application.ExecutablePath));
+                        ProcessLauncher.Start(exe, $"/new");
+                        ApplicationExit();
+                    }
                 }
                 else
                 {
