@@ -1,6 +1,4 @@
-# MultiTeams
-
-![MultiTeams Logo](MultiTeams.png){style="float:right; width: 64px;"}
+# MultiTeams <img align="right" src="MultiTeams.png" style="width: 64px" />
 
 Tired of switching between tennants with your MS Teams? Annoyed, that only one tennant ist starting upon reboot?
 
