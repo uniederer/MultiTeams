@@ -72,6 +72,7 @@ namespace MultiTeams
                 }
             }
 
+            _menu.DropDownItems.Add(new ToolStripSeparator());
             _menu.DropDownItems.Add(ToolStripBuilder.Button("Add...", OnAddInstance_Click));
             _menu.DropDownItems.Add(ToolStripBuilder.Button("Reveal config file in explorer...", (sender, args) =>
             {
