@@ -91,6 +91,12 @@ namespace MultiTeams
                 {
                     _service.Setup.AddInstance(addDialog.Data);
                     SetupStore();
+
+                    var doStart = MessageBox.Show("Instance added. Do you want to start it now?", "Instance added", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (doStart == DialogResult.Yes)
+                    {
+                        _service.LaunchInstance(addDialog.Data);
+                    }
                 }
                 catch (InvalidDataException)
                 {
