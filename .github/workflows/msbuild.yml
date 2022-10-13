@@ -1,8 +1,10 @@
-name: MSBuild
+name: Check-Build
 
 on:
   push:
     branches: [ "master" ]
+    paths-ignore:
+      - .github/**
   pull_request:
     branches: [ "master" ]
 
