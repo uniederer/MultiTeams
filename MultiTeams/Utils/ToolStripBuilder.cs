@@ -9,14 +9,14 @@ using System.Linq;
 
 namespace MultiTeams.Utils
 {
-    internal class ToolStripBuilder
+    internal static class ToolStripBuilder
     {
         /// <summary>
         /// Create a ToolStripMenuItem and set it up as a drop-down
         /// </summary>
         /// <param name="caption">Caption to be displayed</param>
         /// <returns></returns>
-        public static ToolStripMenuItem DropDown(string caption, ToolStripMenuItem[] children)
+        public static ToolStripMenuItem DropDown(string caption, ToolStripItem[] children)
         {
             var result = new ToolStripMenuItem(caption);
             foreach (var child in children)
@@ -59,6 +59,25 @@ namespace MultiTeams.Utils
                 });
             };
             return result;
+        }
+
+        public static ToolStripItem Label(string str, Font? font = null)
+        {
+            return new ToolStripLabel(str)
+            {
+                Font = font
+            };
+        }
+
+        public static ToolStripItem MarginLeftSet(this ToolStripItem item, int value)
+        {
+            var margin = item.Margin;
+
+            //            item.Width += (value - margin.Left);
+            margin.Left = value;
+            item.Margin = margin;
+
+            return item;
         }
     }
 }
