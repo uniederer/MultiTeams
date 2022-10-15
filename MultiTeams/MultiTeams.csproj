@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon>MultiTeams.png</PackageIcon>
     <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
-	<Version>1.1+develop</Version>
+	<Version>1.2.0-alpha.0+master</Version>
   </PropertyGroup>
 
   <ItemGroup>
