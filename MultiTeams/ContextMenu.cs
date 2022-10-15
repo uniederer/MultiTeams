@@ -8,7 +8,6 @@
 using MultiTeams.Utils;
 using MultiTeams.WindowsNative;
 using System;
-using System.Diagnostics;
 using System.Linq;
 
 namespace MultiTeams
@@ -44,10 +43,14 @@ namespace MultiTeams
         private ContextMenuStrip TrayMenuBuild()
         {
             ContextMenuStrip menu = new ContextMenuStrip();
-            menu.Items.Add(new ToolStripLabel($"{_app.ApplicationName}")
-            {
-                Font = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold)
-            });
+            var heading = ToolStripBuilder.Label($"{_app.ApplicationName}");
+            heading.Font = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
+            menu.Items.Add(heading);
+            var version = ToolStripBuilder.Label($"v{Application.ProductVersion}",
+                                                 new Font(FontFamily.GenericSansSerif, 7, FontStyle.Regular))
+                                          .MarginLeftSet(20);
+            version.Alignment = ToolStripItemAlignment.Right;
+            menu.Items.Add(version);
 
             {
                 menu.Items.Add(new ToolStripSeparator());
